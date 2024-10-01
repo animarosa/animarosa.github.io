@@ -114,16 +114,6 @@ body.introduction-page main {
     text-align: left;
 }
 
-body.introduction-page ul {
-    list-style-position: outside;
-    padding-left: 20px;
-    margin-bottom: 2rem;
-}
-
-body.introduction-page li {
-    margin-bottom: 0.5rem;
-}
-
 body.introduction-page li strong {
     font-weight: bold;
     display: inline;

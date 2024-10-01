@@ -16,11 +16,6 @@ header {
     text-align: center;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2rem;
-}
-
 /* Navigation Styling */
 nav ul {
     list-style-type: none;
@@ -51,11 +46,6 @@ nav ul li a:hover {
 main {
     padding: 2rem;
     text-align: center;
-}
-
-main h2 {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
 }
 
 main p {

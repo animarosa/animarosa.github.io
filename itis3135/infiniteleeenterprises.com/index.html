@@ -8,20 +8,33 @@
 
     <!-- Color Scheme: https://coolors.co/463f3a-8a817c-bcb8b1-f4f3ee-e0afa0 -->
     <style>
-        body {
+        html, body {
             font-family: Arial, sans-serif;
             background-color: #463f3a;
             color: #f4f3ee;
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            height: 100%; 
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
         }
 
         header {
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #8a817c; 
+            background-color: #8a817c;
             padding: 20px;
             color: white;
         }
@@ -37,19 +50,14 @@
             margin: 0;
         }
 
-        main {
-            padding: 20px;
-            text-align: center;
-        }
-
         h2 {
-            color: #e0afa0; 
+            color: #e0afa0;
         }
 
         ul {
             list-style-type: square;
             padding-left: 20px;
-            color: #bcb8b1; 
+            color: #9d9288; 
         }
 
         li {
@@ -57,23 +65,21 @@
         }
 
         footer {
-            background-color: #8a817c; 
+            background-color: #8a817c;
             color: white;
             text-align: center;
             padding: 10px;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
         }
 
         .contact-info {
-            border: 1px solid #e0afa0; 
+            border: 1px solid #e0afa0;
             padding: 10px;
             margin-top: 20px;
             display: inline-block;
             text-align: left;
         }
     </style>
+
     <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
 </head>
 <body>

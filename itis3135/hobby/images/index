@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pho Passion</title>
+    <link rel="icon" href="images/pho-icon.png">
+    <style>
+        /* Embedded CSS for styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4e8d9;
+            color: #4b2e24;
+            margin: 0;
+            padding: 0;
+        }
+        header, nav, main, footer {
+            padding: 20px;
+            text-align: center;
+        }
+        header {
+            background-color: #a86c49;
+            color: white;
+        }
+        nav a {
+            margin: 0 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #6d4e39;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        nav a.active {
+            background-color: #4b2e24;
+        }
+        main section {
+            display: none;
+            padding: 20px;
+        }
+        main section.active {
+            display: block;
+        }
+        figure {
+            margin: 20px 0;
+        }
+        figcaption {
+            font-style: italic;
+        }
+        footer {
+            background-color: #a86c49;
+            color: white;
+        }
+        .validation-buttons {
+            margin-top: 20px;
+        }
+        .validation-buttons img,
+        .validation-buttons button {
+            margin: 5px;
+            padding: 10px;
+            border: none;
+            background-color: #6d4e39;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pho Passion</h1>
+        <nav>
+            <a href="#" onclick="showSection('home')" class="active">Home</a>
+            <a href="#" onclick="showSection('about')">About Me</a>
+            <a href="#" onclick="showSection('times')">Best Times</a>
+            <a href="#" onclick="showSection('locations')">Best Locations</a>
+            <a href="#" onclick="showSection('make')">How to Make Pho</a>
+            <a href="#" onclick="showSection('love')">Why I Love Pho</a>
+            <a href="#" onclick="showSection('ai-prompts')">AI Prompts</a>
+        </nav>
+        <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+    </header>
+    
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="active">
+            <h2>What is Pho?</h2>
+            <p>Pho is a traditional Vietnamese noodle soup, known for its rich, savory broth and fresh herbs.</p>
+            <p>It’s a popular comfort food enjoyed by many around the world.</p>
+            <figure>
+                <img src="images/pho-bowl.jpg" alt="A steaming bowl of Pho">
+                <figcaption>A classic bowl of Pho with beef and herbs.</figcaption>
+            </figure>
+            <p><em>Prompt: A steaming bowl of Vietnamese Pho with beef, noodles, and herbs.</em></p>
+        </section>
+        
+        <!-- About Me Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I have a deep passion for Vietnamese cuisine, especially Pho.</p>
+            <p>It reminds me of family gatherings and cozy evenings.</p>
+            <figure>
+                <img src="images/about-me.jpg" alt="Person enjoying Pho">
+                <figcaption>Me enjoying a hot bowl of Pho.</figcaption>
+            </figure>
+            <p><em>Prompt: A person enjoying a bowl of Pho in a cozy setting.</em></p>
+        </section>
+        
+        <!-- Best Times Section -->
+        <section id="times">
+            <h2>Best Times to Eat Pho</h2>
+            <p>Pho is best enjoyed during colder months, especially fall and winter.</p>
+            <p>It’s also a popular breakfast dish in Vietnam, providing warmth in the mornings.</p>
+            <figure>
+                <img src="images/best-time.jpg" alt="Pho served during winter">
+                <figcaption>Perfect Pho meal during the chilly winter.</figcaption>
+            </figure>
+            <p><em>Prompt: A bowl of Pho being enjoyed during winter.</em></p>
+        </section>
+
+        <!-- Continue adding other sections in a similar format... -->
+    </main>
+    
+    <footer>
+        <p>Designed by <a href="https://yourdesignfirm.com">Your Design Firm</a></p>
+    </footer>
+
+    <script>
+        // JavaScript to toggle section visibility
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('main section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Show the home section by default
+        document.getElementById('home').classList.add('active');
+    </script>
+</body>
+</html>

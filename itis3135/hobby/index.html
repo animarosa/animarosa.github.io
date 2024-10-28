@@ -126,23 +126,14 @@
     </footer>
 
     <script>
-        // JavaScript to toggle section visibility
+        // Define the showSection function before usage
         function showSection(sectionId) {
             const sections = document.querySelectorAll('main section');
             sections.forEach((section) => {
                 section.classList.remove('active');
             });
-            document.getElementById(sectionId).classList.add('active');
-
-            const navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach((link) => {
-                link.classList.remove('active');
-            });
-            event.target.classList.add('active');
+        document.getElementById(sectionId).classList.add('active');
         }
-        
-        // Show the home section by default
-        document.getElementById('home').classList.add('active');
 
         document.addEventListener('DOMContentLoaded', () => {
         // Select all nav links
@@ -161,18 +152,9 @@
             });
         });
 
-        // Show the home section by default
-        document.getElementById('home').classList.add('active');
+            // Show the home section by default
+            document.getElementById('home').classList.add('active');
         });
-
-        // Function to show the selected section
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('main section');
-            sections.forEach((section) => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionId).classList.add('active');
-        }
     </script>
 </body>
 </html>

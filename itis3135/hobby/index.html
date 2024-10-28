@@ -70,14 +70,14 @@
     <header>
         <h1>Pho Passion</h1>
         <nav>
-            <a href="#" onclick="showSection('home')" class="active">Home</a>
-            <a href="#" onclick="showSection('about')">About Me</a>
-            <a href="#" onclick="showSection('times')">Best Times</a>
-            <a href="#" onclick="showSection('locations')">Best Locations</a>
-            <a href="#" onclick="showSection('make')">How to Make Pho</a>
-            <a href="#" onclick="showSection('love')">Why I Love Pho</a>
-            <a href="#" onclick="showSection('ai-prompts')">AI Prompts</a>
-        </nav>
+            <a href="#" data-section="home" class="active">Home</a>
+            <a href="#" data-section="about">About Me</a>
+            <a href="#" data-section="times">Best Times</a>
+            <a href="#" data-section="locations">Best Locations</a>
+            <a href="#" data-section="make">How to Make Pho</a>
+            <a href="#" data-section="love">Why I Love Pho</a>
+            <a href="#" data-section="ai-prompts">AI Prompts</a>
+        </nav>        
         <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
     </header>
     
@@ -140,9 +140,39 @@
             });
             event.target.classList.add('active');
         }
+        
+        // Show the home section by default
+        document.getElementById('home').classList.add('active');
+
+        document.addEventListener('DOMContentLoaded', () => {
+        // Select all nav links
+        const navLinks = document.querySelectorAll('nav a');
+
+        // Add click event listener to each link
+        navLinks.forEach((link) => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default link behavior
+                const sectionId = link.getAttribute('data-section');
+                showSection(sectionId);
+
+                // Update active class on nav links
+                navLinks.forEach((link) => link.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
 
         // Show the home section by default
         document.getElementById('home').classList.add('active');
+        });
+
+        // Function to show the selected section
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('main section');
+            sections.forEach((section) => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
     </script>
 </body>
 </html>

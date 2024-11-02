@@ -6,22 +6,47 @@
     <title>Pho Passion</title>
     <link rel="icon" href="images/pho-icon.png">
     <style>
-        /* Embedded CSS for styling */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4e8d9;
             color: #4b2e24;
             margin: 0;
             padding: 0;
+            background-image: url('images/pho-border.jpg'), url('images/pho-border.jpg');
+            background-position: left top, right top;
+            background-size: 160px 100%;
+            background-repeat: no-repeat;
         }
+
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 160px;
+            background-image: url('images/pho-border.jpg');
+            background-size: 160px 100%;
+            background-repeat: no-repeat;
+            background-position: top;
+            border: 2px solid #f4e8d9;
+            box-sizing: border-box;
+            z-index: -1;
+        }
+
+        body::before { left: 0; }
+        body::after { right: 0; }
+
         header, nav, main, footer {
             padding: 20px;
             text-align: center;
         }
+
         header {
             background-color: #a86c49;
             color: white;
         }
+
         nav a {
             margin: 0 10px;
             padding: 10px 20px;
@@ -31,29 +56,66 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        nav a.active {
-            background-color: #4b2e24;
-        }
+
+        nav a.active { background-color: #4b2e24; }
+
         main section {
             display: none;
             padding: 20px;
         }
-        main section.active {
-            display: block;
+
+        main section.active { display: block; }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #f4e8d9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        p, h2, h3, ul, ol {
+            max-width: 60%;
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+
+        ul, ol {
+            margin: 0 auto 20px auto;
+            padding: 0;
+            list-style-position: inside; 
+            max-width: 60%;
+        }
+
+        ul li, ol li {
+            margin-bottom: 5px; 
+            text-align: left;
+        }
+
         figure {
             margin: 20px 0;
         }
+
         figcaption {
             font-style: italic;
         }
+
         footer {
             background-color: #a86c49;
             color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box; 
+            z-index: 1000;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
         }
+
         .validation-buttons {
             margin-top: 20px;
         }
+
         .validation-buttons img,
         .validation-buttons button {
             margin: 5px;
@@ -64,6 +126,109 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
+        img[src*="pho.jpg"],
+        img[src*="about-me.jpg"],
+        img[src*="location.jpg"] {
+            width: 600px;
+            max-width: 100%;
+        }
+        #love figure img {
+            width: 70%;
+            margin: 20px auto;
+            display: block;
+        }
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #4b2e24;
+        }
+
+        th {
+            background-color: #6d4e39;
+            color: white;
+        }
+
+        td {
+            background-color: #f4e8d9;
+        }
+
+        td:not(:empty) {
+            background-color: #a86c49;
+            color: white;
+        }
+
+        table a {
+            color: #0000EE;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+        }
+
+        table a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 95%;
+                padding: 10px;
+            }
+
+            body {
+                padding: 0;
+                background-size: 80px 100%;
+            }
+
+            body::before,
+            body::after {
+                width: 80px;
+            }
+
+            nav a {
+                display: block;
+                margin: 5px auto;
+                padding: 8px 10px;
+                width: 90%;
+                text-align: center;
+                box-sizing: border-box; /* Include padding in width */
+            }
+
+            #love p, #about p, #home p {
+                max-width: 60%;
+                margin: 10px auto;
+            }
+
+            #love figure img {
+                width: 80%;
+            }
+
+            table {
+                width: 70%;
+            }
+
+            th, td {
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            table a {
+                font-size: 14px;
+            }
+
+            footer {
+                font-size: 14px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -72,28 +237,26 @@
         <nav>
             <a href="#" data-section="home" class="active">Home</a>
             <a href="#" data-section="about">About Me</a>
-            <a href="#" data-section="times">Best Times</a>
-            <a href="#" data-section="locations">Best Locations</a>
+            <a href="#" data-section="times">Schedule</a>
+            <a href="#" data-section="locations">Location</a>
             <a href="#" data-section="make">How to Make Pho</a>
             <a href="#" data-section="love">Why I Love Pho</a>
             <a href="#" data-section="ai-prompts">AI Prompts</a>
         </nav>        
         <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
     </header>
-    
     <main>
         <!-- Home Section -->
         <section id="home" class="active">
             <h2>What is Pho?</h2>
             <p>Pho is a traditional Vietnamese noodle soup, known for its rich, savory broth and fresh herbs.</p>
             <p>It’s a popular comfort food enjoyed by many around the world.</p>
+            <p>I love to cook Pho and share my cooking with friends and family!</p>
             <figure>
-                <img src="images/pho-bowl.jpg" alt="A steaming bowl of Pho">
+                <img src="images/pho.jpg" alt="A bowl of Chicken Pho garnished with Cilantro, Green Onion, and Lime.">
                 <figcaption>A classic bowl of Pho with beef and herbs.</figcaption>
             </figure>
-            <p><em>Prompt: A steaming bowl of Vietnamese Pho with beef, noodles, and herbs.</em></p>
         </section>
-        
         <!-- About Me Section -->
         <section id="about">
             <h2>About Me</h2>
@@ -103,30 +266,138 @@
                 <img src="images/about-me.jpg" alt="Person enjoying Pho">
                 <figcaption>Me enjoying a hot bowl of Pho.</figcaption>
             </figure>
-            <p><em>Prompt: A person enjoying a bowl of Pho in a cozy setting.</em></p>
         </section>
-        
-        <!-- Best Times Section -->
+        <!-- Schedule Section -->
         <section id="times">
-            <h2>Best Times to Eat Pho</h2>
-            <p>Pho is best enjoyed during colder months, especially fall and winter.</p>
-            <p>It’s also a popular breakfast dish in Vietnam, providing warmth in the mornings.</p>
-            <figure>
-                <img src="images/best-time.jpg" alt="Pho served during winter">
-                <figcaption>Perfect Pho meal during the chilly winter.</figcaption>
-            </figure>
-            <p><em>Prompt: A bowl of Pho being enjoyed during winter.</em></p>
+            <h2>Schedule</h2>
+            <p>Join our one-hour Pho cooking classes throughout the week. Below is the updated weekly schedule, with links to sign up for each combined time slot:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>9:00 - 11:00 AM</th>
+                        <th>10:00 - 12:00 PM</th>
+                        <th>2:00 - 4:00 PM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday</td>
+                        <td><a href="signup.html?day=Monday&time=9-11am">Sign Up</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td></td>
+                        <td><a href="signup.html?day=Tuesday&time=10-12pm">Sign Up</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td><a href="signup.html?day=Wednesday&time=9-11am">Sign Up</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td></td>
+                        <td><a href="signup.html?day=Thursday&time=10-12pm">Sign Up</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="signup.html?day=Friday&time=2-4pm">Sign Up</a></td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="signup.html?day=Sunday&time=2-4pm">Sign Up</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
-
-        <!-- Continue adding other sections in a similar format... -->
+        <!-- Location Section -->
+        <section id="locations">
+            <h2>Location</h2>
+            <p>Our Pho cooking classes are held at the following location:</p>
+            <p><strong>Address:</strong> 123 Pho Avenue, Charlotte, NC 28202</p>
+            
+            <figure>
+                <!-- Google Maps Replica -->
+                <img src="images/location.jpg" alt="Google Maps Pho Class Location">
+                <figcaption>Replica of Google Maps showing the location of Pho cooking classes at 123 Pho Avenue, Charlotte, NC.</figcaption>
+            </figure>
+        </section>
+        <!-- How to Make Pho Section -->
+        <section id="make">
+            <h2>How to Make Pho</h2>
+            <p>Pho is a delicious Vietnamese noodle soup that you can make at home. Here’s a simple recipe with ingredients and step-by-step instructions:</p>
+            <h3>Ingredients</h3>
+            <ul>
+                <li>1 lb beef bones (for broth)</li>
+                <li>1 onion, halved</li>
+                <li>1 piece of ginger, sliced</li>
+                <li>1 cinnamon stick</li>
+                <li>2 star anise</li>
+                <li>1 tbsp fish sauce</li>
+                <li>1 tbsp sugar</li>
+                <li>8 oz rice noodles</li>
+                <li>1 lb beef (thinly sliced)</li>
+                <li>Fresh herbs (cilantro, basil, mint)</li>
+                <li>Bean sprouts</li>
+                <li>Lime wedges</li>
+                <li>Sliced chili peppers (optional)</li>
+            </ul>
+            <h3>Instructions</h3>
+            <ol>
+                <li><strong>Prepare the broth (2 hours):</strong> Boil the beef bones, then simmer with onion, ginger, cinnamon, star anise, fish sauce, and sugar for 2 hours.</li>
+                <li><strong>Cook the noodles (10 minutes):</strong> Soak and cook the rice noodles according to package instructions.</li>
+                <li><strong>Assemble the Pho (5 minutes):</strong> Place cooked noodles in a bowl, add thinly sliced beef, and pour hot broth over it to cook the beef.</li>
+                <li><strong>Garnish (5 minutes):</strong> Top with fresh herbs, bean sprouts, lime, and optional sliced chili peppers.</li>
+            </ol>
+            <p><strong>Total Time Estimate:</strong> Approximately 2 hours and 20 minutes</p>
+        </section>
+        <!-- Why I Love Pho Section -->
+        <section id="love">
+            <h2>Why I Love Pho</h2>
+            <p>Pho has always held a special place in my heart, not just as a dish, but as a symbol of family and togetherness.</p>
+            
+            <p>Growing up, my mother would often make Pho for our family. The aroma of simmering broth would fill the kitchen, creating a warm and comforting atmosphere. It was a meal that brought us all together at the dinner table, where we shared stories and laughter. To this day, the taste of Pho reminds me of the love and care my mother put into every bowl she made.</p>
+            
+            <p>Beyond its connection to my mother, Pho has also become a way to bond with friends and family. Whether it’s gathering for a meal at a favorite Pho restaurant or making a big pot of Pho at home, it’s always a communal experience. The process of preparing and enjoying Pho together creates meaningful memories and strengthens relationships.</p>
+            
+            <figure>
+                <img src="images/pho-family.jpg" alt="Family enjoying Pho together">
+                <figcaption>Family and friends sharing a meal of Pho together.</figcaption>
+            </figure>
+        </section>
+        <!-- AI Prompts Section -->
+        <section id="ai-prompts">
+            <h2>AI Prompts</h2>
+            <p>This section contains the AI prompts used to generate the content and AI images on this website.</p>
+            <ul>
+                <li><strong>Home Section:</strong> "Describe what is Pho."</li>
+                <li><strong>About Me Section:</strong> "A person enjoying a bowl of Pho in a cozy setting."</li>
+                <li><strong>Best Locations Section:</strong> "Top-rated Pho restaurant with a bustling environment."</li>
+                <li><strong>How to Make Pho Section:</strong> "A step-by-step guide to making Pho at home with ingredients laid out on a kitchen counter."</li>
+                <li><strong>Why I Love Pho Section:</strong> "A happy person savoring a hot bowl of Pho with a smile."</li>
+            </ul>
+        </section>
     </main>
-    
     <footer>
-        <p>Designed by <a href="https://yourdesignfirm.com">Your Design Firm</a></p>
+        <p>Designed by <a href="https://webpages.charlotte.edu/clee172/itis3135/infiniteleeenterprises.com/">InfiniteLeeEnterprises</a></p>
     </footer>
-
     <script>
-        // Define the showSection function before usage
         function showSection(sectionId) {
             const sections = document.querySelectorAll('main section');
             sections.forEach((section) => {
@@ -134,26 +405,23 @@
             });
         document.getElementById(sectionId).classList.add('active');
         }
-
         document.addEventListener('DOMContentLoaded', () => {
-        // Select all nav links
-        const navLinks = document.querySelectorAll('nav a');
 
-        // Add click event listener to each link
-        navLinks.forEach((link) => {
-            link.addEventListener('click', (event) => {
-                event.preventDefault(); // Prevent default link behavior
-                const sectionId = link.getAttribute('data-section');
-                showSection(sectionId);
+            const navLinks = document.querySelectorAll('nav a');
 
-                // Update active class on nav links
-                navLinks.forEach((link) => link.classList.remove('active'));
-                link.classList.add('active');
+            navLinks.forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault(); 
+
+                    const sectionId = link.getAttribute('data-section');
+
+                    showSection(sectionId);
+
+                    navLinks.forEach((navLink) => navLink.classList.remove('active'));
+                    link.classList.add('active');
+                });
             });
-        });
-
-            // Show the home section by default
-            document.getElementById('home').classList.add('active');
+            showSection('home');
         });
     </script>
 </body>
